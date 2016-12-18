@@ -6,3 +6,10 @@
 Homestead.json
 Homestead.yaml
 .env
+.DS_Store
+.DS_Store?
+__MACOSX
+.Spotlight-V100
+.Trashes
+/public/img/covers/*.jpg
+/public/img/covers/41.jpg
