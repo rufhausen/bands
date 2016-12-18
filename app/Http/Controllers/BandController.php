@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Band;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class BandController extends Controller
@@ -12,6 +11,7 @@ class BandController extends Controller
     {
         //
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,8 +19,7 @@ class BandController extends Controller
      */
     public function index()
     {
-        $bands = Band::paginate(10);
-        return view('bands.index', compact('bands'));
+        //
     }
 
     /**
@@ -36,7 +35,7 @@ class BandController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request    $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -46,7 +45,7 @@ class BandController extends Controller
         ]);
 
         $input                 = $request->all();
-        $input['start_date']   = Carbon::parse($input['start_date'])->format('Y-m-d H:i:s');
+        $input['start_date']   = prepareDateInputforDb($input['start_date']);
         $input['still_active'] = (isset($input['still_active']) ? 1 : 0);
 
         if (Band::create($input)) {
@@ -57,7 +56,7 @@ class BandController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Band  $band
+     * @param  \App\Band                   $band
      * @return \Illuminate\Http\Response
      */
     public function show(Band $band)
@@ -68,7 +67,7 @@ class BandController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Band  $band
+     * @param  \App\Band                   $band
      * @return \Illuminate\Http\Response
      */
     public function edit(Band $band)
@@ -79,8 +78,8 @@ class BandController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Band  $band
+     * @param  \Illuminate\Http\Request    $request
+     * @param  \App\Band                   $band
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Band $band)
@@ -92,7 +91,7 @@ class BandController extends Controller
         ]);
 
         $input                 = $request->all();
-        $input['start_date']   = Carbon::parse($input['start_date'])->format('Y-m-d H:i:s');
+        $input['start_date']   = prepareDateInputforDb($input['start_date']);
         $input['still_active'] = (isset($input['still_active']) ? 1 : 0);
 
         if ($band->update($input)) {
@@ -105,7 +104,7 @@ class BandController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Band  $band
+     * @param  \App\Band                   $band
      * @return \Illuminate\Http\Response
      */
     public function destroy(Band $band)

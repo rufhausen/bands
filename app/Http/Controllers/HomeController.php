@@ -39,8 +39,9 @@ class HomeController extends Controller
         }
 
         $bands      = $bandModel->paginate(10);
+        $totalBands = Band::all()->count();
         $sortParams = $this->getSortParams($request);
 
-        return view('home', compact('bands', 'sortParams'));
+        return view('home', compact('bands', 'sortParams', 'totalBands'));
     }
 }

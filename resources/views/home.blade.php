@@ -58,6 +58,11 @@
                 @endforeach
             </tbody>
         </table>
-    <div>{{ $bands->appends(['sort_column' => \Request::input('sort_column'), 'order' => \Request::input('order')])->links() }}</div>
+        <div class="row">
+            <div class="col-md-6">
+                {{ $bands->appends(['sort_column' => \Request::input('sort_column'), 'order' => \Request::input('order')])->links() }}</div>
+                <div  style="margin-top: 20px;">
+                    <div class="col-md-6 text-right text-muted">Total Bands: <span class="badge">{{ $totalBands }}</span></div>
+                </div>
         @include('partials.delete_modal', ['data_type' => 'band','message' => 'All albums associated with this band will also be deleted.'])
     @endsection

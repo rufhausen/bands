@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="row">
-        <div class="col-md-8">{{ $albums->appends(['band_id' => \Request::input('band_id')])->links() }}&nbsp</div>
+        <div class="col-md-8">{{ $albums->appends(['sort_column' => \Request::input('sort_column'), 'order' => \Request::input('order'), 'band_id' => \Request::input('band_id')])->links() }}&nbsp</div>
         <div style="margin-top: 20px;">
             @if(\Request::exists('band_id'))
                 <div class="col-md-1 pull-right">
@@ -82,7 +82,9 @@
                                     </div>
                                     <div class="col-md-10 pull-left">
                                     <strong>{{ $album->name }}</strong> <small class="text-muted"> ({{ $album->genre->name }})<br />
-                                        <span class="small">by <a href="{{ route('bands.edit', ['id' => $album->band->id]) }}">{{ $album->band->name }}</a></span>
+                                        <span class="small">by <a href="{{ route('bands.edit', ['id' => $album->band->id]) }}">{{ $album->band->name }}</a><br />
+                                            {{ $album->number_of_tracks }} Tracks
+                                        </span>
                                         </div>
                                 </div>
                                     </td>
@@ -97,7 +99,7 @@
             <div class="row">
                 <div class="col-md-6">{{ $albums->appends(['band_id' => \Request::input('band_id')])->links() }}</div>
                 <div style="margin-top: 20px;">
-                    <div class="col-md-6 text-right text-muted">Total Albums: {{ $totalAlbums }}</div>
+                    <div class="col-md-6 text-right text-muted">Total Albums: <span class="badge">{{ $totalAlbums }}</span></div>
                 </div>
             </div>
 

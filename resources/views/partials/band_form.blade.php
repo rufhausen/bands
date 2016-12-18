@@ -1,15 +1,15 @@
-    @if (isset($band))
-        {!! Form::model($band, [
-            'route' => ['bands.update', $band],
-            'method' => 'put',
+@if (isset($band))
+    {!! Form::model($band, [
+        'route' => ['bands.update', $band],
+        'method' => 'put',
+        'class' => 'form-horizontal'
+        ]) !!}
+    @else
+        {!! Form::open([
+            'route' => ['bands.store'],
+            'method' => 'post',
             'class' => 'form-horizontal'
             ]) !!}
-        @else
-            {!! Form::open([
-                'route' => ['bands.store'],
-                'method' => 'post',
-                'class' => 'form-horizontal'
-                ]) !!}
         @endif
         <div class="row">
             <div class="form-group">
@@ -32,43 +32,63 @@
                 </div>
             </div>
 
-                <div class="form-group">
-                    <label for="website" class="col-md-2 control-label">Web Site</label>
-                    <div class="col-md-8">
-                        <input class="form-control" name="website" id="website" type="text" value="{{ old('website',  isset($band->website) ? $band->website : null) }}" />
-                    </div>
-                </div>
-
-                <div class="col-md-10 col-md-offset-2">
-                    <div class="checkbox">
-                        <label>
-                            <input name="still_active" type="checkbox" {{ (isset($band->still_active) && ($band->still_active == 1) ? 'checked' : null)}}> Still Active?
-                        </input>
-                    </label>
+            <div class="form-group">
+                <label for="website" class="col-md-2 control-label">Web Site</label>
+                <div class="col-md-8">
+                    <input class="form-control" name="website" id="website" type="text" value="{{ old('website',  isset($band->website) ? $band->website : null) }}" />
                 </div>
             </div>
 
-        </div>
-
-        <div class="row">
             <div class="col-md-10 col-md-offset-2">
-                <button class="btn btn-default" type="submit">
-                    @if(isset($band)) Update @else Create @endif
-                </button>
+                <div class="checkbox">
+                    <label>
+                        <input name="still_active" type="checkbox" {{ (isset($band->still_active) && ($band->still_active == 1) ? 'checked' : null)}}> Still Active?
+                    </input>
+                </label>
             </div>
         </div>
+    </div>
+
+    <div class="form-group">
+    <div class="col-md-2 control-label">
+        <button type="submit" class="btn btn-default">
+            @if(isset($band))
+                Update
+            @else
+                Create
+            @endif
+        </button>
+        <button onclick="history.back();" class="btn btn-notice">Cancel</button>
+    </div>
+</div>
 
         @if(isset($band) && $band->albums()->count())
-            <div class="row" style="margin-top: 20px;">
-                <div class="col-md-11 col-md-offset-1">
-                    <h4>Albums</h4>
-                    <ul>
-                        @foreach($band->albums as $album)
-                            <li><a href="{{ route('albums.edit', ['id' => $album->id]) }}">{{ $album->name }}</a></li>
-                        @endforeach
-                    </ul>
+            <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h2 class="panel-title">Albums by {{ $band->name}}</h2>
+                  </div>
+                  <div class="panel-body">
+                      @foreach($band->albums as $album)
+                          <div class="media">
+
+                              <div class="media-left media-middle">
+                                  <img width="40px;" src="{{ $album->coverImagePath }}" class="img-rounded"/>
+                              </div>
+
+                              <div class="media-body">
+                                  <a href="{{ route('albums.edit', ['id' => $album->id]) }}">{{ $album->name }}</a>
+                                  <br /><small>Released {{ $album->release_date }}</small>
+                              </div>
+
+                          </div>
+                      @endforeach
+                  </div>
                 </div>
-        </div>
-            @endif
-        </div>
-        {!! Form::close() !!}
+                </div>
+            </div>
+            </div>
+        @endif
+    </div>
+    {!! Form::close() !!}

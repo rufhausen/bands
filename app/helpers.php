@@ -1,6 +1,9 @@
 <?php
 
-function standardFormValue($field, $model = null)
+/**
+ * @param $input
+ */
+function prepareDateInputforDb($input)
 {
-    return old($field, isset($model->{$field}) ? $model->{$field} : null);
+    return \Carbon\Carbon::parse($input)->format('Y-m-d H:i:s');
 }

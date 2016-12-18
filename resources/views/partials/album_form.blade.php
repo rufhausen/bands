@@ -94,6 +94,7 @@
             <label for="genre" class="col-md-2 control-label">Genre</label>
             <div class="col-md-3">
                 <select name="genre_id" class="form-control">
+                    <option value="">Select a Genre...</option>
                     @foreach($genres as $genre)
                         @php
                         $selected = '';
@@ -114,7 +115,8 @@
                 @else
                     Create
                 @endif
-                </button>
+            </button>
+            <button onclick="history.back();" class="btn btn-notice">Cancel</button>
         </div>
 
     </div>

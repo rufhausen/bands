@@ -68,7 +68,7 @@
         @include('partials.messages')
         @yield('content')
         </div>
-        <div class="container" style="margin-top: 20px">
+        <div class="container" style="margin-top: 20px;margin-bottom: 50px;">
             <div class="row small">
             <div class="col-md-12" style="margin-bottom: -20px">
             <hr />

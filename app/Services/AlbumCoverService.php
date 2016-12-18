@@ -35,16 +35,3 @@ class AlbumCoverService
         }
     }
 }
-
-// if (\File::exists($path)) {
-//     $img = \Image::make($path);
-//
-//     $img->text($album->name, 20, 20, function ($font) {
-//         $font->size(96);
-//         // $font->file(app_path('resources/assets/fonts/Oswald-Bold.ttf'));
-//         $font->color('#ffffff');
-//         $font->align('left');
-//         $font->valign('top');
-//     });
-//
-//     $img->save($path);

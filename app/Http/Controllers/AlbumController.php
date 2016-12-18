@@ -7,7 +7,6 @@ use App\Band;
 use App\Genre;
 use App\Services\AlbumCoverService;
 use App\Services\TableSortingTrait;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AlbumController extends Controller
@@ -22,6 +21,7 @@ class AlbumController extends Controller
     {
         $albumModel = new Album;
 
+        //Filter by band
         if (!empty($request->input('band_id'))) {
             $albumModel = $albumModel->where('band_id', $request->input('band_id'));
         }
@@ -52,6 +52,9 @@ class AlbumController extends Controller
         return view('albums.create', compact('bands', 'genres'));
     }
 
+    /**
+     * @param Request $request
+     */
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -60,8 +63,8 @@ class AlbumController extends Controller
         ]);
 
         $input                 = $request->all();
-        $input['record_date']  = Carbon::parse($input['record_date'])->format('Y-m-d H:i:s');
-        $input['release_date'] = Carbon::parse($input['release_date'])->format('Y-m-d H:i:s');
+        $input['record_date']  = prepareDateInputforDb($input['record_date']);
+        $input['release_date'] = prepareDateInputforDb($input['release_date']);
 
         $newAlbum = Album::create($input);
 
@@ -75,7 +78,7 @@ class AlbumController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Album  $album
+     * @param  \App\Album                  $album
      * @return \Illuminate\Http\Response
      */
     public function edit(Album $album)
@@ -88,8 +91,8 @@ class AlbumController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Album  $album
+     * @param  \Illuminate\Http\Request    $request
+     * @param  \App\Album                  $album
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Album $album)
@@ -100,18 +103,18 @@ class AlbumController extends Controller
         ]);
 
         $input                 = $request->all();
-        $input['record_date']  = Carbon::parse($input['record_date'])->format('Y-m-d H:i:s');
-        $input['release_date'] = Carbon::parse($input['release_date'])->format('Y-m-d H:i:s');
+        $input['record_date']  = prepareDateInputforDb($input['record_date']);
+        $input['release_date'] = prepareDateInputforDb($input['release_date']);
 
         if ($album->update($input)) {
-            return redirect()->back()->withSuccess('Album updated!');
+            return redirect()->route('albums.index')->withSuccess('Album updated!');
         }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Album  $album
+     * @param  \App\Album                  $album
      * @return \Illuminate\Http\Response
      */
     public function destroy(Album $album)
