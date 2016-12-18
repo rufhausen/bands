@@ -12,6 +12,8 @@ Bands DB is a sample Laravel 5.3.x application.
 - [Font Awesome](http://fontawesome.io/)
 - [jQuery](http://jquery.com/)
 
+[Live Demo](http://bands.rufserver.com)
+
 ###Installation
 
 Download repo:
