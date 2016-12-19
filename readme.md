@@ -23,6 +23,9 @@ Download repo:
 
 Copy .env.example to .env and set db credentials
 
+Create application key
+```php artisan key:generate```
+
 Install Dependencies:
 ```composer install```
 
@@ -31,6 +34,7 @@ Migrate & seed database:
 
 ### Notes  
 - When albums are seeded, the application will attempt to create some placeholder album covers using a placeholder. The same will happen each time an album is user-created.
+- When bands are deleted, their associated albums are deleted using a model event in the Band model.
 - I've created an additional table for 'genres'. Since this data is essentially static, I've overridden the model's all() method to cache the genres list.
 
 

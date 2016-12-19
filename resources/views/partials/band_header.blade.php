@@ -3,7 +3,7 @@
         @if(isset($band))
             <h3>{{ $band->name }}</h3>
         @else
-            <h3>Add a new Album</h3>
+            <h3>Add a new Band</h3>
         @endif
         <hr/>
     </div>

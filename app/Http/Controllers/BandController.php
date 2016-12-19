@@ -95,7 +95,7 @@ class BandController extends Controller
         $input['still_active'] = (isset($input['still_active']) ? 1 : 0);
 
         if ($band->update($input)) {
-            return redirect()->route('bands.edit', ['id' => $band->id])->withSuccess('Band has been updated!');
+            return redirect()->to('/')->withSuccess('Band has been updated!');
         } else {
             //Go back with error
         }

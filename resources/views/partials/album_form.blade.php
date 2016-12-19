@@ -113,7 +113,7 @@
         </div>
     </div>
     <div class="form-group">
-        <div class="col-md-2 control-label">
+        <div class="col-md-4">
             <button type="submit" class="btn btn-default">
                 @if(isset($album))
                     Update
@@ -123,6 +123,5 @@
             </button>
             <button onclick="history.back();" class="btn btn-notice">Cancel</button>
         </div>
-
     </div>
 {!! Form::close() !!}

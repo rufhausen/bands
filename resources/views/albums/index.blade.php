@@ -61,7 +61,7 @@
                 @foreach($albums as $album)
                     <tr>
                         {{-- class="clickable-row" data-href='{{ route('bands.edit', ['id' => $album->id]) }}' --}}
-                        <th scope="row">
+                        <td>
                             <div class="row">
                                 <div class="col-md-6">
                                     <a href="{{ route('albums.edit', ['id' => $album->id]) }}"
@@ -76,7 +76,7 @@
                                 </div>
                                 {!! Form::close() !!}
                             </div>
-                        </th>
+                        </td>
                         <td>
                             <div class="row">
                                 <div class="col-md-2 pull-left">

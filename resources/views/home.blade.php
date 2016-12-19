@@ -37,20 +37,20 @@
         @foreach($bands as $band)
             <tr>
                 {{-- class="clickable-row" data-href='{{ route('bands.edit', ['id' => $band->id]) }}' --}}
-                <th>
+                <td>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <a href="{{ route('bands.edit', ['id' => $band->id]) }}" class="btn btn-primary btn-sm"><i
                                         class="fa fa-edit" aria-hidden="true"></i></a>
                         </div>
                         {!! Form::model($band, ['method' => 'delete', 'route' => ['bands.destroy', $band->id], 'class' =>'form-inline form-delete']) !!}
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             {!! Form::hidden('id', $band->id) !!}
                             {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i>', ['type' => 'submit','class' => 'btn btn-sm btn-danger delete', 'name' => 'delete_modal','style'=> 'float:left']) !!}
                         </div>
                         {!! Form::close() !!}
                     </div>
-                </th>
+                </td>
                 <td>{{ $band->name }}
                     <small class="text-muted">({{ $band->albums()->count() }})</small>
                 </td>
