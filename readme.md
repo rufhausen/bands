@@ -1,5 +1,6 @@
 
- 
+![build status](http://ci.rufserver.com/build-status/image/1)
+
 ## Bands DB
 
 Bands DB is a sample Laravel 5.3.x application.
@@ -29,10 +30,10 @@ Create application key
 Install Dependencies:
 ```composer install```
 
-Migrate & seed database: 
+Migrate & seed database:
 ```php artisan migrate --seed```
 
-### Notes  
+### Notes
 - When albums are seeded, the application will attempt to create some placeholder album covers using a placeholder. The same will happen each time an album is user-created.
 - When bands are deleted, their associated albums are deleted using a model event in the Band model.
 - I've created an additional table for 'genres'. Since this data is essentially static, I've overridden the model's all() method to cache the genres list.

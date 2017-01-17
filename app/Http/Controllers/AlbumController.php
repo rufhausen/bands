@@ -28,10 +28,10 @@ class AlbumController extends Controller
 
         if (!empty($request->input('sort_column')) && !empty($request->input('order'))) {
             //Prevent passing bad/dangerous data
-            $valid_order  = in_array($request->input('order'), ['asc', 'desc']);
-            $valid_column = \Schema::hasColumn('albums', $request->input('sort_column'));
+            $validOrder  = in_array($request->input('order'), ['asc', 'desc']);
+            $validColumn = \Schema::hasColumn('albums', $request->input('sort_column'));
 
-            if ($valid_order && $valid_column) {
+            if ($validOrder && $validColumn) {
                 $albumModel = $albumModel::orderBy($request->input('sort_column'), $request->input('order'));
             }
         }
