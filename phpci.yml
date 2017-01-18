@@ -1,13 +1,26 @@
 build_settings:
   verbose: false
   prefer_symlink: false
+  ignore:
+      - "vendor"
+  mysql:
+    host: "localhost"
+    user: "root"
+    pass: ""
 
 setup:
+  mysql:
+        - "DROP DATABASE IF EXISTS bands_test;"
+        - "CREATE DATABASE bands_test;"
+        - "GRANT ALL PRIVILEGES ON test.* TO test@'localhost' IDENTIFIED BY 'test';"
   composer:
     action: "install"
     prefer_dist: false
+  shell:
+    - "cd %BUILD_PATH% && php artisan migrate --seed" # Laravel Migrations
 env:
-    APPLICATION_ENV: "test"
+    APP_ENV: "test"
+    DB_CONNECTION: "testing"
 test:
   php_parallel_lint:
     ignore:
@@ -38,3 +51,6 @@ test:
     config:
       - "phpunit.xml"
     path: "tests/"
+complete:
+  mysql:
+    - "DROP DATABASE IF EXISTS bands_test;"
