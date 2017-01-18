@@ -56,8 +56,8 @@ test:
   php_unit:
     config:
       - "%BUILD_PATH%/phpunit.xml"
-    path: "%BUILD_PATH%/tests/"
-    args: "--coverage-text tests"
+    path: "%BUILD_PATH%tests/"
+    coverage: "tests"
 complete:
   # mysql:
   #   - "DROP DATABASE IF EXISTS bands_test;"
