@@ -15,7 +15,7 @@ before_script:
   - php artisan key:generate
 
 script:
-  - vendor/bin/phpmd phpmd_ruleset.xml
+  - vendor/bin/phpmd app text cleancode codesize design naming unusedcode
   - vendor/bin/phpunit
 
 notifications:
