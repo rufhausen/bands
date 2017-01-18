@@ -9,10 +9,10 @@ build_settings:
     pass: ""
 
 setup:
-  mysql:
-        - "DROP DATABASE IF EXISTS bands_test;"
-        - "CREATE DATABASE bands_test;"
-        - "GRANT ALL PRIVILEGES ON test.* TO test@'localhost' IDENTIFIED BY 'test';"
+  # mysql:
+  #       - "DROP DATABASE IF EXISTS bands_test;"
+  #       - "CREATE DATABASE bands_test;"
+  #       - "GRANT ALL PRIVILEGES ON test.* TO test@'localhost' IDENTIFIED BY 'test';"
   composer:
     action: "install"
     prefer_dist: false
@@ -20,7 +20,7 @@ setup:
     - "cd %BUILD_PATH% && php artisan migrate --seed" # Laravel Migrations
 env:
     APP_ENV: "test"
-    DB_CONNECTION: "testing"
+    DB_CONNECTION: "sqlite"
 test:
   php_parallel_lint:
     ignore:
@@ -52,5 +52,5 @@ test:
       - "phpunit.xml"
     path: "tests/"
 complete:
-  mysql:
-    - "DROP DATABASE IF EXISTS bands_test;"
+  # mysql:
+  #   - "DROP DATABASE IF EXISTS bands_test;"
