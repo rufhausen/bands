@@ -15,8 +15,7 @@ before_script:
   - php artisan key:generate
 
 script:
-  - vendor/bin/phpcs
-  - vendor/bin/phpmd
+  - vendor/bin/phpmd phpmd_ruleset.xml
   - vendor/bin/phpunit
 
 notifications:
