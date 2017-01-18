@@ -3,11 +3,10 @@ build_settings:
   prefer_symlink: false
   ignore:
       - "vendor"
-  mysql:
-    host: "localhost"
-    user: "root"
-    pass: ""
-
+  # mysql:
+  #   host: "localhost"
+  #   user: "root"
+  #   pass: ""
 setup:
   # mysql:
   #       - "DROP DATABASE IF EXISTS bands_test;"
@@ -17,7 +16,9 @@ setup:
     action: "install"
     prefer_dist: false
   shell:
-    - cd %BUILD_PATH%/database && touch database.sqlite
+    - "cd %BUILD_PATH% && cp .env.ci .env"
+    - "php artisan key:generate"
+    - "cd %BUILD_PATH%/database && touch database.sqlite"
     - "cd %BUILD_PATH% && php artisan migrate --seed" # Laravel Migrations
 env:
     APP_ENV: "test"
