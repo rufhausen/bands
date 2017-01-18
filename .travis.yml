@@ -13,6 +13,7 @@ before_script:
   - touch database/database.sqlite
   - composer install --no-interaction
   - php artisan key:generate
+  - php artisan migrate --seed
 
 script:
   # - vendor/bin/phpmd app text cleancode codesize design naming unusedcode
