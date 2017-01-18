@@ -17,6 +17,7 @@ setup:
     action: "install"
     prefer_dist: false
   shell:
+    - cd %BUILD_PATH%/database && touch database.sqlite
     - "cd %BUILD_PATH% && php artisan migrate --seed" # Laravel Migrations
 env:
     APP_ENV: "test"
