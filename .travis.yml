@@ -5,6 +5,8 @@ php:
   - '7.0'
   - '7.1'
 
+sudo: false
+
 before_script:
   - cp .env.travis .env
   #- mysql -e 'create database homestead_test;'
@@ -13,4 +15,13 @@ before_script:
   - php artisan key:generate
 
 script:
+  - vendor/bin/phpcs
+  - vendor/bin/phpmd
   - vendor/bin/phpunit
+
+notifications:
+  email:
+    recipients:
+      - gtaylor@electricwerks.com
+    on_success: always
+    on_failure: always
