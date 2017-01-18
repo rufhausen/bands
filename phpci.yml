@@ -55,8 +55,9 @@ test:
     zero_config: true # do not make build as failed if something was detected
   php_unit:
     config:
-      - "phpunit.xml"
-    path: "tests/"
+      - "%BUILD_PATH%/phpunit.xml"
+    path: "%BUILD_PATH%/tests/"
+    args: "--coverage-text tests"
 complete:
   # mysql:
   #   - "DROP DATABASE IF EXISTS bands_test;"
