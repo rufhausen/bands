@@ -11,6 +11,6 @@ class BandsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Band::class, 20)->create();
+        factory(App\Band::class, 10)->create();
     }
 }

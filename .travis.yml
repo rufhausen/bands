@@ -10,7 +10,6 @@ sudo: false
 before_script:
   - cp .env.ci .env
   - composer self-update
-  - touch database/database.sqlite
   - composer install --no-interaction
   - php artisan key:generate
   - php artisan migrate --seed

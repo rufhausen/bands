@@ -11,7 +11,7 @@
 |
  */
 Route::get('test', function () {
-    //
+    return env('APP_ENV');
 });
 
 Route::get('/', 'HomeController@index');

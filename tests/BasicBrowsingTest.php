@@ -32,6 +32,19 @@ class BasicBrowsingTest extends TestCase
              ->seePageIs('/bands/create');
     }
 
+    public function testCreateABand()
+    {
+        $this->visit('/bands/create')
+             ->type('FooBar Band', 'name')
+             ->type('01/01/2000', 'start_date')
+             ->type('http://foobar.com', 'website')
+             ->check('still_active')
+             ->press('Create')
+             ->seePageIs('/')
+             ->visitRoute('bands.edit', ['id' => 11])
+             ->see('FooBar Band');
+    }
+
     public function testBandCreatePageEmptyValidation()
     {
         $this->visit('/')

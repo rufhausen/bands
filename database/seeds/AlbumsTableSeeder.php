@@ -12,13 +12,15 @@ class AlbumsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Album::class, 50)->create();
+        factory(App\Album::class, 30)->create();
 
         $albums = App\Album::all();
         $covers = new AlbumCoverService;
 
-        foreach ($albums as $album) {
-            $covers->makeCover($album->id);
+        if (env('APP_ENV') !== 'testing') {
+            foreach ($albums as $album) {
+                $covers->makeCover($album->id);
+            }
         }
     }
 }
