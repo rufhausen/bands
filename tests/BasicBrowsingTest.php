@@ -15,7 +15,14 @@ class BasicBrowsingTest extends TestCase
 
     public function testBandEditPage()
     {
-        $this->visitRoute('bands.edit', ['id' => 1]);
+        $this->visitRoute('bands.edit', ['id' => 1])
+             ->see('Band Name');
+    }
+
+    public function testAlbumEditPage()
+    {
+        $this->visitRoute('albums.edit', ['id' => 1])
+             ->see('Album Name');
     }
 
     public function testBandCreatePage()
