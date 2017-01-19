@@ -23,7 +23,7 @@ setup:
     - "php artisan key:generate"
     - "cd %BUILD_PATH% && php artisan migrate --seed" # Laravel Migrations
   env:
-    APP_ENV: "test"
+    APP_ENV: "testing"
     DB_CONNECTION: "testing"
 test:
   php_parallel_lint:
