@@ -22,8 +22,8 @@ setup:
     - "echo storage permissions updated"
     - "php artisan key:generate"
     - "cd %BUILD_PATH% && php artisan migrate --seed" # Laravel Migrations
-env:
-    APP_ENV: "testing"
+  env:
+    APP_ENV: "test"
     DB_CONNECTION: "testing"
 test:
   php_parallel_lint:
