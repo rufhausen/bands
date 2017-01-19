@@ -55,7 +55,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">Bands<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ route('bands.create') }}">Create</a></li>
+                            <li><a href="{{ route('bands.create') }}" id="band-create">Create</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -63,7 +63,7 @@
                            aria-expanded="false">Albums<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="{{ route('albums.index') }}">List</a></li>
-                            <li><a href="{{ route('albums.create') }}">Create</a></li>
+                            <li><a href="{{ route('albums.create') }}" id="album-create">Create</a></li>
                         </ul>
                     </li>
                 </ul>
