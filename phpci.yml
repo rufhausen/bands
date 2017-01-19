@@ -18,10 +18,10 @@ setup:
   shell:
     - "cd %BUILD_PATH% && cp .env.ci .env"
     - "echo copied .env file"
-    - "cd %BUILD_PATH% && chmod 777 -R storage" # Laravel Migrations
+    - "cd %BUILD_PATH% && chmod 777 -R storage" #may not be necessary
     - "echo storage permissions updated"
     - "php artisan key:generate"
-    - "cd %BUILD_PATH% && php artisan migrate --seed" # Laravel Migrations
+    # - "cd %BUILD_PATH% && php artisan migrate --seed" # Laravel Migrations
   env:
     APP_ENV: "testing"
     DB_CONNECTION: "testing"
