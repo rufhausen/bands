@@ -21,8 +21,6 @@ setup:
     - "cd %BUILD_PATH% && chmod 777 -R storage" #may not be necessary
     - "echo storage permissions updated"
     - "php artisan key:generate"
-    # - "cd %BUILD_PATH% && php artisan migrate --seed" #I'm using sqlite for testing currently and
-    # migrate/seeding in tests setup and teardown
   env:
     APP_ENV: "testing"
     DB_CONNECTION: "testing"
