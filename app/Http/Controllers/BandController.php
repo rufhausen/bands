@@ -45,7 +45,7 @@ class BandController extends Controller
         ]);
 
         $input                 = $request->all();
-        $input['start_date']   = prepareDateInputforDb($input['start_date']);
+        $input['start_date']   = prepareDateInputForDb($input['start_date']);
         $input['still_active'] = (isset($input['still_active']) ? 1 : 0);
 
         if (Band::create($input)) {
@@ -91,7 +91,7 @@ class BandController extends Controller
         ]);
 
         $input                 = $request->all();
-        $input['start_date']   = prepareDateInputforDb($input['start_date']);
+        $input['start_date']   = prepareDateInputForDb($input['start_date']);
         $input['still_active'] = (isset($input['still_active']) ? 1 : 0);
 
         if ($band->update($input)) {

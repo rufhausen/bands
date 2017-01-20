@@ -63,8 +63,8 @@ class AlbumController extends Controller
         ]);
 
         $input                 = $request->all();
-        $input['record_date']  = prepareDateInputforDb($input['record_date']);
-        $input['release_date'] = prepareDateInputforDb($input['release_date']);
+        $input['record_date']  = prepareDateInputForDb($input['record_date']);
+        $input['release_date'] = prepareDateInputForDb($input['release_date']);
 
         $newAlbum = Album::create($input);
 
@@ -103,8 +103,8 @@ class AlbumController extends Controller
         ]);
 
         $input                 = $request->all();
-        $input['record_date']  = prepareDateInputforDb($input['record_date']);
-        $input['release_date'] = prepareDateInputforDb($input['release_date']);
+        $input['record_date']  = prepareDateInputForDb($input['record_date']);
+        $input['release_date'] = prepareDateInputForDb($input['release_date']);
 
         if ($album->update($input)) {
             return redirect()->route('albums.index')->withSuccess('Album updated!');
