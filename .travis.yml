@@ -6,7 +6,6 @@ php:
   - '7.1'
 
 sudo: required
-dist: trusty
 
 before_install:
  - export CHROME_BIN=/usr/bin/google-chrome
@@ -25,7 +24,7 @@ before_script:
 
 script:
   - vendor/bin/phpmd app text codesize design naming unusedcode
-  - vendor/bin/phpunit --testdox --coverage-text tests
+  - vendor/bin/phpunit --testdox
 
 notifications:
   email:
