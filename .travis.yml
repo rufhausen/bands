@@ -2,7 +2,7 @@ language: php
 
 php:
   # - '5.6'
-  - '7.0'
+  # - '7.0'
   - '7.1'
 
 sudo: false
@@ -15,7 +15,7 @@ before_script:
 
 script:
   - vendor/bin/phpmd app text codesize design naming unusedcode
-  - vendor/bin/phpunit --configuration phpunit.xml --testdox --coverage-text tests
+  - vendor/bin/phpunit --configuration ./phpunit.xml --testdox --coverage-text tests
 
 notifications:
   email:

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'sqlite'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -54,10 +54,10 @@ return [
         ],
 
         'testing' => [
-    'driver'   => 'sqlite',
-    'database' => ':memory:',
-    'prefix'   => '',
-],
+            'driver'   => 'sqlite',
+            'database' => ':memory:',
+            'prefix'   => '',
+        ],
 
         'pgsql' => [
             'driver' => 'pgsql',

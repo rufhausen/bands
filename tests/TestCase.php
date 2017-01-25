@@ -3,23 +3,21 @@
 namespace Tests;
 
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
-use Artisan;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
-
+    use DatabaseMigrations;
 
     public function setUp()
     {
         parent::setUp();
-        Artisan::call('migrate');
-        Artisan::call('db:seed', ['--database' => 'testing']);
     }
 
     public function tearDown()
     {
-        Artisan::call('migrate:reset');
         parent::tearDown();
     }
 }

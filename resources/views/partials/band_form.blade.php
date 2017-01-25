@@ -36,6 +36,7 @@
         <div class="checkbox">
             <label>
                 <input name="still_active"
+                        id='still_active'
                        type="checkbox" {{ (isset($band->still_active) && ($band->still_active == 1) ? 'checked' : null)}}>
                 Still Active?
                 </input>
