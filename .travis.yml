@@ -9,7 +9,7 @@ sudo: false
 
 before_script:
   - cp .env.ci .env
-  - composer install --dev --prefer-source --no-interaction
+  - composer install --dev --no-interaction
   - php artisan key:generate
   - php artisan migrate --seed
 
