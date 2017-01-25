@@ -1,12 +1,6 @@
-@if (isset($album))
-    {!! Form::model($album, [
-        'route' => ['albums.update', $album],
-        'method' => 'put',
-        'class' => 'form-horizontal'
-        ]) !!}
-@else
-    {!! Form::open(['class' => 'form-horizontal', 'method' => 'post','route' => ['albums.store']]) !!}
-@endif
+<form method="post" class="form-horizontal" action="{{ $formAction }}">
+    @if (isset($album))<input name="_method" type="hidden" value="PUT">@endif
+{{ csrf_field() }}
 <div class="row">
     <div class="form-group">
         <label for="albumName" class="col-md-2 control-label">Album Name</label>
@@ -124,4 +118,4 @@
             <button onclick="history.back();" class="btn btn-notice">Cancel</button>
         </div>
     </div>
-{!! Form::close() !!}
+</form>

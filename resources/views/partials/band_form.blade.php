@@ -1,16 +1,6 @@
-@if (isset($band))
-    {!! Form::model($band, [
-        'route' => ['bands.update', $band],
-        'method' => 'put',
-        'class' => 'form-horizontal'
-        ]) !!}
-@else
-    {!! Form::open([
-        'route' => ['bands.store'],
-        'method' => 'post',
-        'class' => 'form-horizontal'
-        ]) !!}
-@endif
+<form class="form-horizontal" action="{{ $formAction }}" method="post">
+    @if (isset($band))<input name="_method" type="hidden" value="PUT">@endif
+    {{ csrf_field() }}
 <div class="row">
     <div class="form-group">
         <label for="bandName" class="col-md-2 control-label">Band Name</label>
@@ -96,4 +86,4 @@
     </div>
     @endif
     </div>
-    {!! Form::close() !!}
+</form>

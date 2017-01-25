@@ -13,7 +13,7 @@
                 </div>
             @endif
             <div class="col-md-3 pull-right">
-                {{ Form::open(['method' => 'get']) }}
+                <form method="get">
                 <select name="band_id" id="bands_select" class="form-control">
                     <option value="">Filter by Band...</option>
                     @foreach($bands as $band)
@@ -24,7 +24,7 @@
                         <option value="{{ $band->id }}" {{ $selected }}>{{ $band->name }}</option>
                     @endforeach
                 </select>
-                {{ Form::close() }}
+                </form>
             </div>
         </div>
     </div>
@@ -69,12 +69,16 @@
                                         <i class="fa fa-edit" aria-hidden="true"></i>
                                     </a>
                                 </div>
-                                {!! Form::model($album, ['method' => 'delete', 'route' => ['albums.destroy', $album->id], 'class' =>'form-inline form-delete']) !!}
+                                <form method="post" action="{{ route('albums.destroy', ['id' => $album->id]) }}" class="form-inline form-delete">
+                                    <input name="_method" type="hidden" value="delete">
+                                    {{ csrf_field() }}
                                 <div class="col-md-6">
-                                    {!! Form::hidden('id', $album->id) !!}
-                                    {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger delete', 'name' => 'delete_modal']) !!}
+                                    <input type="hidden" name="id" value="{{ $album->id }}">
+                                    <button name="delete_modal" type="submit" class="btn btn-sm btn-danger delete">
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                    </button>
                                 </div>
-                                {!! Form::close() !!}
+                            </form>
                             </div>
                         </td>
                         <td>

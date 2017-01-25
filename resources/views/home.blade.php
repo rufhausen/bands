@@ -36,19 +36,22 @@
         <tbody>
         @foreach($bands as $band)
             <tr>
-                {{-- class="clickable-row" data-href='{{ route('bands.edit', ['id' => $band->id]) }}' --}}
                 <td>
                     <div class="row">
                         <div class="col-md-6">
                             <a href="{{ route('bands.edit', ['id' => $band->id]) }}" class="btn btn-primary btn-sm"><i
                                         class="fa fa-edit" aria-hidden="true"></i></a>
                         </div>
-                        {!! Form::model($band, ['method' => 'delete', 'route' => ['bands.destroy', $band->id], 'class' =>'form-inline form-delete']) !!}
+                        <form action="{{ route('bands.destroy', ['id' => $band->id]) }}" class="form-inline form-delete" method="post">
+                        <input name="_method" type="hidden" value="delete">
+                        {{ csrf_field() }}
                         <div class="col-md-6">
-                            {!! Form::hidden('id', $band->id) !!}
-                            {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i>', ['type' => 'submit','class' => 'btn btn-sm btn-danger delete', 'name' => 'delete_modal','style'=> 'float:left']) !!}
+                            <input type="hidden" name="id" value="{{ $band->id }}">
+                            <button name="delete_modal" type="submit" class="btn btn-sm btn-danger delete" style="float:left">
+                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            </button>
                         </div>
-                        {!! Form::close() !!}
+                    </form>
                     </div>
                 </td>
                 <td>{{ $band->name }}

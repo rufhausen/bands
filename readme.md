@@ -3,16 +3,15 @@
 
 ## Bands DB
 
-Bands DB is a sample Laravel 5.3.x application.
+Bands DB is a sample Laravel 5.4 application.
 
 ### Tools
-- [Laravel 5.3](https://laravel.com)
+- [Laravel 5.4](https://laravel.com)
 - [MySQL](https://www.mysql.com/)
 - [Bootstrap CSS Framework](http://getbootstrap.com/)
 - [Bootstrap datepicker](https://github.com/uxsolutions/bootstrap-datepicker)
 - [Font Awesome](http://fontawesome.io/)
 - [jQuery](http://jquery.com/)
-- [Laravel Collective HTML/form builder Composer package](https://github.com/LaravelCollective)
 - [Intervention/Image Composer package](https://github.com/Intervention/image)
 
 [Live Demo](http://bands.rufserver.com)
