@@ -15,45 +15,45 @@ setup:
   composer:
     action: "install"
     prefer_dist: false
-  shell:
-    - "cd %BUILD_PATH% && cp .env.ci .env"
-    - "echo copied .env file"
-    - "cd %BUILD_PATH% && chmod 777 -R storage" #may not be necessary
-    - "echo storage permissions updated"
-    - "php artisan key:generate"
-  env:
-    APP_ENV: "testing"
-    DB_CONNECTION: "testing"
-test:
-  php_parallel_lint:
-    ignore:
-      - vendor/
-      - _ide_helper.php
-  php_code_sniffer:
-    #standard: "/phpcs.xml"
-    #allowed_errors: 0
-    #allowed_warnings: -1 #unlimited
-    path: "app"
-    ignore:
-      - "app/views"
-    standard: "PSR1,PSR2"
-  php_mess_detector:
-    path: "app"
-    ignore:
-        - 'vendor'
-    rules:
-    #   - "cleancode" #throws a bunch of errors when using facades because of static method calls rule.
-      - "controversial"
-      - "codesize"
-      - "design"
-      - "naming"
-      - "unusedcode"
-    allow_failures: true
-    zero_config: true # do not make build as failed if something was detected
-  php_unit:
-    config:
-      - "phpunit.xml"
-    path: "tests/"
-complete:
+#   shell:
+#     - "cd %BUILD_PATH% && cp .env.ci .env"
+#     - "echo copied .env file"
+#     - "cd %BUILD_PATH% && chmod 777 -R storage" #may not be necessary
+#     - "echo storage permissions updated"
+#     - "php artisan key:generate"
+#   env:
+#     APP_ENV: "testing"
+#     DB_CONNECTION: "testing"
+# test:
+#   php_parallel_lint:
+#     ignore:
+#       - vendor/
+#       - _ide_helper.php
+#   php_code_sniffer:
+#     #standard: "/phpcs.xml"
+#     #allowed_errors: 0
+#     #allowed_warnings: -1 #unlimited
+#     path: "app"
+#     ignore:
+#       - "app/views"
+#     standard: "PSR1,PSR2"
+#   php_mess_detector:
+#     path: "app"
+#     ignore:
+#         - 'vendor'
+#     rules:
+#     #   - "cleancode" #throws a bunch of errors when using facades because of static method calls rule.
+#       - "controversial"
+#       - "codesize"
+#       - "design"
+#       - "naming"
+#       - "unusedcode"
+#     allow_failures: true
+#     zero_config: true # do not make build as failed if something was detected
+#   php_unit:
+#     config:
+#       - "phpunit.xml"
+#     path: "tests/"
+# complete:
   # mysql:
   #   - "DROP DATABASE IF EXISTS bands_test;"
