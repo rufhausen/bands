@@ -12,6 +12,7 @@ addons:
   apt:
     packages:
       - google-chrome-stable
+      - xvfb
 
 before_script:
   - export DISPLAY=:99.0
