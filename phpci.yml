@@ -53,7 +53,7 @@ test:
   php_unit:
     config:
       - "phpunit.xml"
-    path: "tests/"
+#    path: "tests/"
 complete:
   # mysql:
   #   - "DROP DATABASE IF EXISTS bands_test;"
