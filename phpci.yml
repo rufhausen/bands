@@ -15,15 +15,15 @@ setup:
   composer:
     action: "install"
     prefer_dist: false
-#   shell:
-#     - "cd %BUILD_PATH% && cp .env.ci .env"
-#     - "echo copied .env file"
-#     - "cd %BUILD_PATH% && chmod 777 -R storage" #may not be necessary
-#     - "echo storage permissions updated"
-#     - "php artisan key:generate"
-#   env:
-#     APP_ENV: "testing"
-#     DB_CONNECTION: "testing"
+  shell:
+    - "cd %BUILD_PATH% && cp .env.ci .env"
+    - "echo copied .env file"
+    - "cd %BUILD_PATH% && chmod 777 -R storage" #may not be necessary
+    - "echo storage permissions updated"
+    - "php artisan key:generate"
+  env:
+    APP_ENV: "testing"
+    DB_CONNECTION: "testing"
 # test:
 #   php_parallel_lint:
 #     ignore:
